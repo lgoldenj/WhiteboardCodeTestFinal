@@ -1,0 +1,35 @@
+{% extends "lg-base.twig" %}
+
+{% block content %}
+<style>
+
+.img-container {
+  min-height: 400px;
+  background:  linear-gradient(rgba(0, 0, 0, .8),rgba(0, 0, 0, .2)), url({{ post.get_field('city_image')}});
+  background-repeat: no-repeat;  
+  background-position: bottom center;
+  /*padding: 40px; (If don't want to set min-height or some image content is there) */
+}
+</style>
+
+	<div class="content-wrapper">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="article-content">
+				<h1>{{post.city_name}}, {% if post.state_province_name %} {{post.state_province_name}}, {% endif %} {{post.country_name}} {% if post.native_city_name %}({{post.native_city_name}} {% if post.native_state_province_name %}, {{post.native_state_province_name}}{% endif %}){% endif %}</h1>
+				<p><div class="img-container mid fade"><h2>{{post.native_city_welcome}}!!</h2></div></p>
+                <p><strong>Population:</strong> {{post.population}}</p>
+				<div class="article-body">
+					{{post.content}}
+				</div>             
+                {% if post.longitude and post.latitude %}
+                <p><strong>Latitude:</strong> {{post.latitude}}</p>
+                <p><strong>Longitude:</strong> {{post.longitude}}</p>
+                <div class="acf-map">
+                    <div class="marker" data-zoom="10" data-lat="{{post.latitude}}" data-lng="{{post.longitude}}"></div>
+                </div>
+                {% endif %}
+			</section>
+			{{ function('comments_template') }}
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

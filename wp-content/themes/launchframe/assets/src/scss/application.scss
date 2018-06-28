@@ -1,0 +1,32 @@
+// Stylesheets
+@import "typography";
+@import "utilities";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
+
+
+
+.acf-map {
+    width: 100%;
+    height: 400px;
+    margin: 20px 0;
+    border: #CCC solid 1px;	
+
+}
+.acf-map img {
+    max-width: inherit !important;
+}
+
+.mid h2 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #FFF;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+}
+
+
